@@ -1,0 +1,11 @@
+{
+    "name": "bookstore/api",
+    "description": "bookstore REST API using PHP",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Bookstore\\Api\\": "src/"
+        }
+    },
+    "require": {}
+}

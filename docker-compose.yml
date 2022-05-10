@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  app:
+    image: bitnami/php-fpm:latest
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./app:/app
+    networks:
+      - bookstore
+
+  nginx:
+    image: 'bitnami/nginx:latest'
+    depends_on:
+      - app
+    networks:
+      - bookstore
+    ports:
+      - '8080:80'
+      - '443:443'
+    volumes:
+      - ./server.conf:/opt/bitnami/nginx/conf/server_blocks/bookstore.conf
+
+networks:
+  bookstore:
+    driver: bridge
